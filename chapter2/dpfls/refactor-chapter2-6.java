@@ -1,5 +1,5 @@
 const int NUMBER_OF_TASKS = 34;
-const int realDaysPerIdealDay = 4;
+const int REAL_DAYS_PER_IDEAL_DAY = 4;
 const int WORK_DAYS_PER_WEEK = 5;
 int sum = 0;
 
