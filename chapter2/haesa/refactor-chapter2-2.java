@@ -2,7 +2,8 @@ function z(string) {
   replacedString = "";
 
   for (index = 0; index < string.length; index++) {
-    character = s.charAt(index) == "Z" ? "%" : s.charAt(index);
+    const isZ = string.charAt(index) == "Z";
+    character = isZ ? "%" : string.charAt(index);
     replacedString = replacedString + character;
   }
 
