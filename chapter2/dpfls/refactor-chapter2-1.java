@@ -24,6 +24,6 @@ private static void printPrimeNumber(boolean[] isPrime, int size) {
     }
 }
 
-initializeFlagArr(flag, n);
+initializeFlagArr(isPrime, n);
 checkPrimeNumber(n);
-printPrimeNumber(flag, n);
+printPrimeNumber(isPrime, n);
