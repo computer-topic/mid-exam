@@ -1,5 +1,5 @@
-public static void copyString (char[] from, char[] to) {
-  for (int i = 0; i < from.length; i++) {
-    to[i] = from[i];
+public static void copyString(char[] source, char[] destination) {
+  for (int i = 0; i < source.length; i++) {
+    destination[i] = source[i];
   }
 }
