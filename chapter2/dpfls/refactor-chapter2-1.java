@@ -1,29 +1,26 @@
-private static void initializeFlagArr(boolean[] flag, int size) {
+private static void initializeFlagArr(boolean[] isPrime, int size) {
     for (int i = 0; i <= size; i++) {
-        flag[i] = true;
+        isPrime[i] = true;
     }
 }
 
-private static void checkPrimeNumber(int size) {
-    int j;
+private static void checkPrimeNumber(boolean[] isPrime, int size) {
+    int factorableNumber;
 
-    for （int i = 2; i <= size / 2; i++） {
-        j = i + i;
-        while (j <= size) {
-            flag[j] = false;
-            j = j + i;
+    for （int factor = 2; i <= factor / 2; i++） {
+        factorableNumber = factor + factor;
+        while (factorableNumber <= size) {
+        isPrime[factorableNumber] = false;
+        factorableNumber = factorableNumber + factor;
+
+private static void printPrimeNumber(boolean[] isPrime, int size){
+    for （int primeCandidate=1;primeCandidate<=size;i++） {
+        if(isPrime[primeCandidate]){
+            System.out.printin(primeCandidate+"is prime.");
         }
     }
 }
 
-private static void printPrimeNumber(boolean[] flag, int size) {
-    for （int i = 1; i <= size; i++） {
-        if (flag[i]) {
-            System.out.printin(i + "is prime.");
-        }
-    }
-}
-
-initializeFlagArr(flag, n);
+initializeFlagArr(isPrime, n);
 checkPrimeNumber(n);
-printPrimeNumber(flag, n);
+printPrimeNumber(isPrime, n);
