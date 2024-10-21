@@ -1,13 +1,21 @@
-public static int FLAGED = 4;
+public class Cell {
+  public static final int BASE = 0;
+  public static final int FLAGED = 4;
+  private int[] cell;
 
-public List<int[]> getFlagedLine() {
-  List<int[]> result = new ArrayList<int[]>();
+  public isFlagged() {
+    this.cell[BASE] == FLAGED
+  }
+}
 
-  for (int[] line : theList) {
-    if (line[0] == FLAGED) {
-      result.add(line);
+public List<Cell> getFlagedLine() {
+  List<Cell> flaggedCells = new ArrayList<Cell>();
+
+  for (Cell cell : gameBoard) {
+    if (cell.isFlagged()) {
+      flaggedCells.add(cell);
     }
   }
   
-  return result;
+  return flaggedCells;
 }
