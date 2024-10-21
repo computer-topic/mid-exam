@@ -6,7 +6,7 @@ public List<Cell> getItemPosition () {
 
     for (Cell cell : map) {
         if (cell[MOVABLE_SPACE] == ITEM) {
-            itemPosition.add (cell);
+            itemPosition.add(cell);
         }
     }
     return itemPosition;
