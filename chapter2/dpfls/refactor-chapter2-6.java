@@ -4,7 +4,7 @@ const int WORK_DAYS_PER_WEEK = 5;
 int sum = 0;
 
 for (int j = 0; j < 34; j++) {
-    int realTaskDays = taskEstimate[j] * realDaysPerIdealDay;
+    int realTaskDays = taskEstimate[j] * REAL_DAYS_PER_IDEAL_DAY;
     int realTaskWeeks = realTaskDays / WORK_DAYS_PER_WEEK;
     sum += realTaskWeeks;
 }
