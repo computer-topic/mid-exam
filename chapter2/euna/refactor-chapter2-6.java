@@ -8,5 +8,5 @@ int[] taskEstimate = new int[NUMBER_OF_TASKS];
 for (int j = 0; j < NUMBER_OF_TASKS; j++) {
   int realTaskDays = taskEstimate[j] * realDaysPerIdealDay;
   int realTaskWeeks = (realTaskDays / WORK_DAYS_PER_WEEK);
-  sum += (t[j] * REAL_DAYS_PER_IDEAL_DAY) / WORK_DAYS_PER_WEEK;
+  sum += realTaskWeeks
 }
