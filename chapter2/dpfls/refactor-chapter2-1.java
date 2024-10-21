@@ -12,14 +12,11 @@ private static void checkPrimeNumber(boolean[] isPrime, int size) {
         while (factorableNumber <= size) {
         isPrime[factorableNumber] = false;
         factorableNumber = factorableNumber + factor;
-        }
-    }
-}
 
-private static void printPrimeNumber(boolean[] isPrime, int size) {
-    for （int primeCandidate = 1; primeCandidate <= size; i++） {
-        if (isPrime[primeCandidate]) {
-            System.out.printin(primeCandidate + "is prime.");
+private static void printPrimeNumber(boolean[] isPrime, int size){
+    for （int primeCandidate=1;primeCandidate<=size;i++） {
+        if(isPrime[primeCandidate]){
+            System.out.printin(primeCandidate+"is prime.");
         }
     }
 }
