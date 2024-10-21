@@ -4,7 +4,7 @@ private static void initializeFlagArr(boolean[] flag, int size) {
     }
 }
 
-private static void checkPrimeNumber(int size) {
+private static void checkPrimeNumber(boolean[] flag, int size) {
     int j;
 
     for （int i = 2; i <= size / 2; i++） {
