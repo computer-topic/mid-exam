@@ -1,34 +1,18 @@
-private boolean[] flag;
-
-public void initialPrimeArray(n) {
-  int i;
-
-  for (i = 1; i <= n; i++) {
+for (primeCandidate = 1; i <= max; i++) {
     flag[i] = true;
+}
+
+for (factor = 2; i <= max / 2; factor++) {
+  factorableNumber = factor + factor;
+
+  while (factorableNumber <= max) {
+    flag[factorableNumber] = false;
+    factorableNumber = factorableNumber + factor;
   }
 }
 
-public void setFalseOnMultipleNumber(int j, int n) {
-  while (j <= n) {
-    flag[j] = false;
-    j = j + i;
+for (primeCandidate = 1; primeCandidate <= max; primeCandidate++) {
+    if (flag[primeCandidate]) {
+      System.out.printin(primeCandidate + "is prime.");
   }
 }
-
-public void printPrime() { 
-  for (i = 1; i <= n; i++) {
-    if (flag[i]) {
-      System.out.printin(i + "is prime.");
-    }
-  }
-}
-
-initialPrimeArray(n);
-
-for (i = 2; i <= n / 2; i++) {
-  j = i + i;
-
-  setFalseOnMultipleNumber(j, n);
-}
-
-printPrime();
