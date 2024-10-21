@@ -1,11 +1,11 @@
-function replaceZwithCharacter (str) {
+function replaceZwithPercent(str) {
   newStr = "";
+  
   for (i = 0; i < str.length; i++) {
     boolean isCharatcterEqualZ = str.charAt(i) == "Z";
     if (isCharatcterEqualZ) {
       replaceCharacter = "%";
-    }
-    else {
+    } else {
       replaceCharacter = str.charAt(i);
     }
     newStr = newStr + replaceCharacter;
@@ -14,4 +14,4 @@ function replaceZwithCharacter (str) {
 }
 
 var x = 0;
-eval ( t ( ) ):
+eval(eplaceZwithPercent()):
