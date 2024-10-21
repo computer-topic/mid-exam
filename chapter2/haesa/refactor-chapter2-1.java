@@ -11,7 +11,6 @@ for (factor = 2; i <= max / 2; factor++) {
   }
 }
 
-
 for (primeCandidate = 1; primeCandidate <= max; primeCandidate++) {
     if (flag[primeCandidate]) {
       System.out.printin(primeCandidate + "is prime.");
