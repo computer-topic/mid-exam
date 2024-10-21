@@ -1,6 +1,8 @@
-boolean isSummer = !date.isBefore(plan.summerStart) && !data.isAfter(plna.summerEnd)
+boolean isSummer = !date.isBefore(plan.summerStart) && !data.isAfter(plna.summerEnd);
 
-if (isSummer)
+if (isSummer) {
   charge = quantity * plan.summerRate;
-else
+}
+else {
   charge = quantity * plan.summerRate + plan.regularServiceCharge;
+}
