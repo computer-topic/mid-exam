@@ -2,8 +2,8 @@ public void printOwing() {
     double outstanding = 0.0;
 
     printBanner();
-    calculateOutstanding();
-    printCustomerOwes();
+    outstanding = calculateOutstanding();
+    printCustomerOwes(outstanding);
 }
 
 private void printBanner() {
@@ -14,13 +14,16 @@ private void printBanner() {
 
 
 private void calculateOutstanding() {
-    while (_orders.hasMoreElements()) {
-        Order each = (Order)_orders.nextElement();
+    double outstanding = 0.0;
+
+    while (orders.hasMoreElements()) {
+        Order each = (Order)orders.nextElement();
         outstanding += each.getAmount();
     }
+    return outstanding;
 }
 
-private void printCustomerOwes() {
-    System.out.println("name:" + _name);
+private void printCustomerDetails(double outstanding) {
+    System.out.println("name:" + name);
     System.out.println("amount" + outstanding);
 }
