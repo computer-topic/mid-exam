@@ -1,23 +1,28 @@
+private static final int FIXED_SIZE = 10;
+
 public void add(Object element) {
     if (readOnly)
         return ;
-    if (isFull(element, currentSize)) {
-        elements = getNewElements(currentSize);
+    if (isFull(element)) {
+        replaceElementWithNewElements();
     }
-    elements[currentSize++] = element;
+    addNewElement(element);
 }
 
-private boolean isFull(Object element, int currentSize) {
-    int newSize = currentSize + 1;
-    return newSize > element.length;
+private boolean isFull(Object element) {
+    return size + 1 > element.length;
 }
 
-private getNewElements(int currentSize) {
+private void replaceElementWithNewElements() {
     Object[] newElements;
 
-    newElements = new Object[elements.length + 10];
-    for (int i = 0; i < currentSize; i++) {
+    newElements = new Object[elements.length + FIXED_SIZE];
+    for (int i = 0; i < size; i++) {
         newElements[i] = elements[i];
     }
-    return newElements;
+    elements = newElements;
+}
+
+private void addNewElement(Object element) {
+    elements[size++] = element;
 }
