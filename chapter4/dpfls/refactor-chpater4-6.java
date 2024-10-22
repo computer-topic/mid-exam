@@ -29,7 +29,7 @@ public class GeneratePrimes {
     private int[] getPrimeNumbers(int maxValue) {
         initializePrimeFlags(maxValue + 1);
         markMultiplesAsNotPrime();
-        return initializePrimeNumbers(primeCount);
+        return initializePrimeNumbers();
     }
 
     private int[] initializePrimeFlags(int size) {
@@ -43,13 +43,13 @@ public class GeneratePrimes {
         return flags;
     }
 
-    private int[] initializePrimeNumbers(int primeCount) {
+    private int[] initializePrimeNumbers() {
       int primeCount;
 
       primeCount = countPrimeNumbers();
       primeNumbers = new int[primeCount];
       for (int i = 0, j = 0; i < size; i++) {
-          if (isUncrossedNumber(i)) {
+          if (isNotMarkNumber(i)) {
               primeNumbers[j++] = i;
           }
       }
@@ -61,7 +61,7 @@ public class GeneratePrimes {
 
         limit = getLimit();
         for (int i = 2; i <= limit; i++) {
-            if (isUncrossedNumber(i)) {
+            if (isNotMarkNumber(i)) {
                 markMultipleAsNotPrime(i)
             }
         }
@@ -74,7 +74,7 @@ public class GeneratePrimes {
         return (int) limit;
     }
 
-    private boolean isUncrossedNumber(int i) {
+    private boolean isNotMarkNumber(int i) {
         return primeFlags[i];
     }
 
