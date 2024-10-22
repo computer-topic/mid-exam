@@ -3,13 +3,14 @@ function hashIt(data) {
   const length = data.length;
 
   for (let i = 0; i < length ; i++) {
-    const char = data.charCodeAt(i);
-    hash = makeHash(hash, char);
+    const charactorCode = data.charCodeAt(i);
+
+    hash = makeHash(hash, charactorCode);
   }
 }
 
-function makeHash(hash, char) {
-  hash = (hash << 5) - hash + char;
+function makeHash(hash, charactorCode) {
+  hash = (hash << 5) - hash + charactorCode;
   // Convert to 32-bit integer
-  return hash &= hash;
+  return hash & hash;
 }
