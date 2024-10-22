@@ -6,7 +6,7 @@ public class Point(double x, double y) {
   ....
 }
 
-Circle makeCircle(Point p, double radius);
+Circle makeCircle(Point point, double radius);
 
 
 
