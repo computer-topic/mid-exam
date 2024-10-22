@@ -9,6 +9,8 @@ private void isTestPage(PageData pageData){
 }
 
 private void includeSetupAndTeardownPages() {
+    StringBuffer buffer;
+
     buffer = new StringBuffer();
     setup(buffer, isSuite);
     buffer.append(pageData.getContent());
