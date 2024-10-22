@@ -14,7 +14,7 @@ public class PluralMessage {
     } else if (count == 1) {
       handleThereIsOneLetter();
     } else {
-      handleThereAreManyLetters();
+      handleThereAreManyLetters(count);
     }
   }
 
@@ -30,7 +30,7 @@ public class PluralMessage {
     pluralModifier = "";
   }
 
-  private void handleThereAreManyLetters() {
+  private void handleThereAreManyLetters(int count) {
     number = Integer.toString(count);
     verb = "are";
     pluralModifier = "s";
