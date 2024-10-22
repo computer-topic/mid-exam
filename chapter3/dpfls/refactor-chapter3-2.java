@@ -1,21 +1,22 @@
 public void add(Object element) {
     if (readOnly)
         return ;
-    if (isFull(size)) {
-        elements = getNewElements(size);
+    if (isFull(element, currentSize)) {
+        elements = getNewElements(currentSize);
     }
-    elements[size++] = element;
+    elements[currentSize++] = element;
 }
 
-private boolean isFull(int size) {
-    return (size + 1 > element.length);
+private boolean isFull(Object element, int currentSize) {
+    int newSize = currentSize + 1;
+    return newSize > element.length;
 }
 
-private getNewElements(int size) {
+private getNewElements(int currentSize) {
     Object[] newElements;
 
     newElements = new Object[elements.length + 10];
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < currentSize; i++) {
         newElements[i] = elements[i];
     }
     return newElements;
