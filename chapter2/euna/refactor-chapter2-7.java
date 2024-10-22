@@ -3,7 +3,7 @@ public class GuessStatistics {
   private String verb;
   private String pluralModifier;
 
-  public String getGuessMessage(char candidate, int count) {
+  public void getGuessMessage(char candidate, int count) {
     setUpVariables(count);
     String guessMessage = String.format(
       "There %s %s %s%s", verb, number, candidate, pluralModifier);
