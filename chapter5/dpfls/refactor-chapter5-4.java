@@ -2,7 +2,7 @@ public int countTestCases() {
     int count;
 
     count = 0;
-    for (Test each : tests)
-        count += each.countTestCases();
+    for (Test eachTest : tests)
+        count += eachTest.countTestCases();
     return count;
 }
