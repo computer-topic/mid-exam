@@ -1,3 +1,5 @@
+// 교재에서는 리눅스 프로그래밍으로 생각하고 그냥 wc로 내비둠..
+// class단에서 멤버변수 분리는 하지 않고 함수만 추출하도록 수업하심
 public class WordCounter {
   private int lineCount;
   private int charCount;
