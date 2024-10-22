@@ -11,80 +11,88 @@
 import java.util.*;
 
 public class GeneratePrimes {
-    private int size;
     private boolean[] primeFlags;
+    private boolean[] primeNumbers;
 
     public static int[] generatePrimes(int maxValue) {
-      if (isInputValid(maxValue)) {
-        return getPrimeNumbers(maxValue);
-      } else {
-        return new int[0];
-      }
+        if (isInputValid(maxValue)) {
+            return getPrimeNumbers(maxValue);
+        } else {
+            return new int[0];
+        }
     }
 
     private boolean isInputValid(int maxValue) {
-      return maxValue >= 2;
+        return maxValue >= 2;
     }
 
     private int[] getPrimeNumbers(int maxValue) {
-      size = maxValue + 1;
-      primeFlags = initializePrimeFlags();
+      initializePrimeFlags(maxValue + 1);
       markMultiplesAsNotPrime();
       return initializePrimeNumbers(primeCount);
     }
 
-    private int[] initializePrimeFlags() {
-      boolean[] flags = new boolean[size];
-      for (int i = 0; i < size; i++) {
-        flags[i] = true;
-      }
-
-      // get rid of known non-primes
-      flags[0] = false;
-      flags[1] = false;
-      return flags;
+    private int[] initializePrimeFlags(int size) {
+        primeFlags = new boolean[size];
+        for (int i = 0; i < size; i++) {
+            flags[i] = true;
+        }
+        // get rid of known non-primes
+        flags[0] = false;
+        flags[1] = false;
+        return flags;
     }
 
     private int[] initializePrimeNumbers(int primeCount) {
       int primeCount;
 
       primeCount = countPrimeNumbers();
-      int[] primes = new int[primeCount];
+      primeNumbers = new int[primeCount];
       for (int i = 0, j = 0; i < size; i++) {
-        if (isUncrossedNumber(i)) {
-          primes[j++] = i;
-        }
+          if (isUncrossedNumber(i)) {
+              primeNumbers[j++] = i;
+          }
       }
-      return primes;
+      return primeNumbers;
     }
 
     private void markMultiplesAsNotPrime() {
-      for (int i = 2; i < Math.sqrt(s) + 1; i++) {
-        if (isUncrossedNumber(i)) {
-          for (int j = 2 * i; j < size; j += i) {
-            markAsNotPrime(j);
-          }
+        int limit;
+
+        limit = getLimit();
+        for (int i = 2; i <= limit; i++) {
+            if (isUncrossedNumber(i)) {
+                markMultipleAsNotPrime(i)
+            }
         }
-      }
+    }
+
+    private int getLimit() {
+        double limit;
+
+        limit = Math.sqrt(primeFlags.length);
+        return (int) limit;
     }
 
     private boolean isUncrossedNumber(int i) {
-      return primeFlags[i];
+        return primeFlags[i];
     }
 
-    private void markAsNotPrime(int j) {
-      primeFlags[j] = false;
+    private void markMultipleAsNotPrime(int i) {
+        for (int j = 2 * i; j < size; j += i) {
+            primeFlags[j] = false;
+        }
     }
 
     private int countPrimeNumbers() {
-      int count;
+        int count;
 
-      count = 0;
-      for (boolean isPrime : primeFlags) {
-        if (isPrime) {
-          count++;
+        count = 0;
+        for (boolean isPrime : primeFlags) {
+            if (isPrime) {
+                count++;
+            }
         }
-      }
-      return count;
+        return count;
     }
   }
