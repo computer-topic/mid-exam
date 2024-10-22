@@ -6,7 +6,7 @@ private void startSending() {
     ...
   } catch(Exception e) {
     // 교재에서는 addExceptionAndClosedResponse(e)라고 함
-    makeErrorResponse(response);
+    makeErrorResponse(e);
   }
 }
 
