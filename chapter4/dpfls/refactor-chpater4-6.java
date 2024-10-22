@@ -17,9 +17,7 @@ public class GeneratePrimes {
     public static int[] generatePrimes(int maxValue) {
         if (isInputValid(maxValue)) {
             return getPrimeNumbers(maxValue);
-        } else {
-            return new int[0];
-        }
+        return new int[0];
     }
 
     private boolean isInputValid(int maxValue) {
