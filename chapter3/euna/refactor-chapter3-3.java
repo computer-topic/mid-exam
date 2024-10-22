@@ -11,6 +11,5 @@ public String getFirstName(String mobileNumber) {
 private String getPersonFirstNameFromAddress(String mobileNumber) {
   Json address = addressService.getAddress(mobileNumber);
   Person personDetail = address.getPersonDetails();
-
   return personDetail.firstName;
 }
