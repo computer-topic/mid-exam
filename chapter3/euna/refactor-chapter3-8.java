@@ -1,5 +1,5 @@
 try {
-  deletePage(page);;
+  deletePage(page);
   registry.deleteReference(page.name);
   configKeys.deleteKey(page.name.makeKey());
   logger.log("page deleted");
