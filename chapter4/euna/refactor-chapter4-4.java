@@ -1,5 +1,5 @@
-List<SubSystem> dependSubsystems = module.getDependSubsystems();
-String subSystem = susSysMod.getSubSystem();
+List<System> dependSubsystems = module.getDependSubsystems();
+System subSystem = susSysMod.getSubSystem();
 if(dependSubsystems.contains(subSysMod)) {
   ...
 }
