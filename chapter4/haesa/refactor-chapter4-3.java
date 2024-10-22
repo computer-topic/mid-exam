@@ -4,7 +4,7 @@ private void startSending() {
   } catch(SocketException e) {
     // normal. someone stopped the request.
   } catch(Exception e) {
-    handleError(e)
+    addExceptionMessageAndCloseResponse(e)
   }
 }
 
