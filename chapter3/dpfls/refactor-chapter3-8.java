@@ -1,12 +1,12 @@
 public void delete() {
     try {
-        tryDeletePageAndAssociations();
+        tryDeletePageAndAssociations(page);
     } catch (Exception error) {
         logger.log(error.getMessage());
     }
 }
 
-private void tryDeletePageAndAssociations() {
+private void tryDeletePageAndAssociations(Page page) {
     deletePage(page);
     registry.deleteReference(page.name);
     configKeys.deleteKey(page.name.makeKey());
