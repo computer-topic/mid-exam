@@ -19,21 +19,21 @@ public class wordCount {
       System.err.println("Error:" + e.getMessage());
     }
   }
-}
 
-private int calculateCounts(String line) {
+  private void calculateCounts(String line) {
     lineCount++;
     charCount += line.length();
     wordCount = countWords(line, wordCount);
-}
+  }
 
-private int countWords(String line, int wordCount) {
-  String words[] = line.split("\\W");
-  return wordCount + words.length;
-}
+  private int countWords(String line, int wordCount) {
+    String words[] = line.split("\\W");
+    return wordCount + words.length;
+  }
 
-private void printCounts(int wordCount, int lineCount, int charCount) {
-  System.out.println("wordCount = " + wordCount);
-  System.out.println("lineCount = " + lineCount);
-  System.out.println("charCount = " + charCount);
+  private void printCounts(int wordCount, int lineCount, int charCount) {
+    System.out.println("wordCount = " + wordCount);
+    System.out.println("lineCount = " + lineCount);
+    System.out.println("charCount = " + charCount);
+  }
 }
