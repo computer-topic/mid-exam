@@ -1,15 +1,16 @@
-public static boolean isDateBetweenSummerTime() {
-    if (!date.isBefore(summerStart) && !date.isAfter(summerEnd)) {
-        return true;
-    }
-    return false;
+public static boolean isSummer() {
+    return !date.isBefore(plan.summerStart) && !date.isAfter(plan.summerEnd);
 }
 
-String summerStart = plan.summerStart;
-String summerEnd = plan.summerEnd;
-String regularServiceCharge = plan.regularServiceCharge;
+public static int getSummerCharge() {
+    return quantity * plan.summerRate;
+}
 
-if (isDateBetweenSummerTime(summerStart, summerEnd))
-  charge = quantity * summerRate;
+public static int getRegularCharge() {
+    return quantity * plan.regularRate + plan.regularServiceCharge;
+}
+
+if (isSummer())
+    charge = getSummerCharge();
 else
-  charge = quantity * summerRate + regularServiceCharge;
+    charge = getRegularCharge();
