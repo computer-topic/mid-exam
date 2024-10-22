@@ -1,5 +1,5 @@
 (1)
-public class Point(double x, double y) {
+public class Point {
   private double x;
   private double y;
   
