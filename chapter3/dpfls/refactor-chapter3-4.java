@@ -1,6 +1,6 @@
 public static String renderPage(PageData pageData, boolean isSuite) {
     if (isTestPage(pageData))
-        includeSetupAndTeardownPages();
+        includeSetupAndTeardownPages(pageData);
     return pageData.getHtml();
 }
 
@@ -8,7 +8,7 @@ private void isTestPage(PageData pageData){
     return pageData.hasAttribute("Test");
 }
 
-private void includeSetupAndTeardownPages() {
+private void includeSetupAndTeardownPages(PageData pageData) {
     StringBuffer buffer;
 
     buffer = new StringBuffer();
@@ -19,24 +19,24 @@ private void includeSetupAndTeardownPages() {
 }
 
 private void setup(StringBuffer buffer, boolean isSuite) {
-    String message;
+    String type;
 
-    message = "!include -setup .";
-    writeMessagePathName(buffer, message);
+    type = "setup";
+    writeMessagePathName(buffer, type);
     if (isSuite)
-        writeMessagePathName(buffer, message);
+        writeMessagePathName(buffer, type);
 }
 
 private void teardown(StringBuffer buffer, boolean isSuite) {
-    String message;
+    String type;
 
-    message = "!include -teardown .";
-    writeMessagePathName(buffer, message);
+    type = "teardown";
+    writeMessagePathName(buffer, type);
     if (isSuite)
-        writeMessagePathName(buffer, message);
+        writeMessagePathName(buffer, type);
 }
 
-private void writeMessagePathName(StringBuffer buffer, String message) {
+private void writeMessagePathName(StringBuffer buffer, String type) {
     WikiPage page;
     WikiPagePath path;
     String pathName;
@@ -46,11 +46,13 @@ private void writeMessagePathName(StringBuffer buffer, String message) {
         return ;
     path = page.getFullPath();
     pathName = PathParser.render(path);
-    fillBuffer(buffer, message, pathName)
+    fillBuffer(buffer, type, pathName)
 }
 
-private void fillBuffer(StringBuffer buffer, String message, String pagePathName) {
-    buffer.append(message)
+private void fillBuffer(StringBuffer buffer, String type, String pagePathName) {
+    buffer.append("!include -")
+        .append(type)
+        .append(" .")
         .append(pagePathName)
         .append("\n");
 }
