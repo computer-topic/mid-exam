@@ -1,70 +1,57 @@
-public class HtmlRenderer {
-  private StringBuffer renderBuffer = new StringBuffer();
+public class TestPageGenerator {
+  private StringBuffer newPageContent = new StringBuffer();
 
-  public static String getHtmlWithTest(PageData pageData, boolean includeSuiteSetup) {
-    WikiPage wikiPage = pageData.getWikiPage();
-    boolean hasTest = pageData.hasAttribute("Test");
+  public static String renderPageWithSetupAndTeardown(PageData pageData, boolean isSuite) {
+    boolean isTestPage = pageData.hasAttribute("Test");
 
-    if (hasTest) {
-      setupTest(includeSuiteSetup);
+    if (isTestPage) {
+      includeSetupPage(pageData, isSuite);
+      includePageContent(pageData);
+      includeTeardownPage(pageData, isSuite);
+      updatePageContent(pageData);
     }
 
-    appendPageData();
-
-    if (hasTest) {
-      teardownTest(includeSuiteSetup);
-    }
-
-    renderHtml()
     return pageData.getHtml();
   }
 
-  private void setupTest(boolean includeSuiteSetup) {
-    if (includeSuiteSetup) {
-      WikiPage suiteSetupWikiPage = PageCrawlerImp.getInheritedPage(...);
-      appendSetupLogToBuffer(suiteSetupWikiPage);
+  private void includeSetupPage(PageData pageData, boolean isSuite) {
+    String type = "setup";
+
+    if (isSuite) {
+      WikiPage suiteSetupWikiPage = PageCrawlerImp.getInheritedPage(pageData, ...);
+      appendNewPageContent(suiteSetupWikiPage, type, isSuite);
     }
 
-    WikiPage setupWikiPage = PageCrawlerImp.getInheritedPage(...);
-    appendSetupLogToBuffer(setupWikiPage);
+    WikiPage setupWikiPage = PageCrawlerImp.getInheritedPage(pageData, ...);
+    appendNewPageContent(setupWikiPage, type, isSuite);
   }
 
-  private void appendSetupLogToBuffer(WikiPage wikiPage) {
-    if (wikiPage != null) {
-      String wikiPagePathName = getWikiPagePathName(wikiPage);
-      renderBuffer.append("!include -setup .")
-            .append(wikiPagePathName)
-            .append("\n");
+  private void appendNewPageContent(WikiPage wikiPage, String type, boolean isSuite) {
+    if (wikiPage == null) {
+      return;
     }
+
+    boolean isSuiteTeardown = type == "teardown" && isSuite;
+    String newLine = String.format("%s", isSuiteTeardown ? "\n" : "");
+    String includedType = String.format("!include  -%s .", type);
+    String wikiPagePathName = getWikiPagePathName(wikiPage);
+
+    newPageContent
+      .append(newLine)
+      .append(includedType)
+      .append(wikiPagePathName)
+      .append("\n");
   }
 
-  private void teardownTest(boolean includeSuiteSetup) {
-    WikiPage teardownWikiPage = PageCrawlerImpl.getInheritedPage(...);
-    appendTeardownLogToBuffer(teardownWikiPage);
+  private void includeTeardownPage(PageData pageData, boolean isSuite) {
+    String type = "teardown";
 
-    if (includeSuiteSetup) {
-      WikiPage suiteTeardown = PageCrawlerImpl.getInheritedPage(...);
-      appendTeardownLogToBuffer(suiteTeardown, includeSuiteSetup);
-    }
-  }
+    WikiPage teardownWikiPage = PageCrawlerImpl.getInheritedPage(pageData, ...);
+    appendNewPageContent(teardownWikiPage, type, isSuite);
 
-  private void appendTeardownLogToBuffer(WikiPage wikiPage) {
-    if (wikiPage != null) {
-      String wikiPagePathName = getWikiPagePathName(wikiPage);
-      renderBuffer.append("\n")
-            .append("!include -teardown .")
-            .append(wikiPagePathName)
-            .append("\n");
-    }
-  }
-
-  private void appendTeardownLogToBuffer(WikiPage wikiPage, boolean includeSuiteSetup) {
-    if (wikiPage != null) {
-      String wikiPagePathName = getWikiPagePathName(wikiPage);
-      renderBuffer.append(includeSuiteSetup ? "" : "\n")
-            .append("!include -teardown .")
-            .append(wikiPagePathName)
-            .append("\n");
+    if (isSuite) {
+      WikiPage suiteTeardown = PageCrawlerImpl.getInheritedPage(pageData, ...);
+      appendNewPageContent(teardownWikiPage, type, isSuite);
     }
   }
 
@@ -73,11 +60,11 @@ public class HtmlRenderer {
     return PathParser.render(wikiPagePath);
   }
 
-  private void appendPageData() {
-    renderBuffer.append(pageData.getContent());
+  private void includePageContent(PageData pageData) {
+    newPageContent.append(pageData.getContent());
   }
 
-  private void renderHtml() {
-    pageData.setContent(renderBuffer.toString());
+  private void updatePageContent(PageData pageData) {
+    pageData.setContent(newPageContent.toString());
   }
 }
