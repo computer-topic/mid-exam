@@ -12,6 +12,7 @@ public class BoldWidget extends ParentWidget {
         match.find();
         addChildWidgets(match.group(1));
     }
+
     public String render() throws Exception {
         StringBuffer html = new StringBuffer("<b>");
         html.append(childHtml()).append("</b>");
