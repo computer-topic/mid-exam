@@ -7,14 +7,14 @@ public class UserValidator {
     if (user == User.NULL) {
       return false;
     }
-    if (validatePassword(user, password)) {
+    if (isValidPassword(user, password)) {
       Session.initialize();
       return true;
     }
     return false;
   }
 
-  private boolean validatePassword(User user, String password) {
+  private boolean isValidPassword(User user, String password) {
     String codedPhrase = user.getPhraseEncodedByPassword();
     String phrase = cryptographer.decrypt(codedPhrase, password);
 
