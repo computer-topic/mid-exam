@@ -5,7 +5,7 @@ public class Point(double x, double y) {
   
   ....
 }
-
+// 원의 중심을 Point로 나타내기 위해 교재에서는 Point center로 작성함
 Circle makeCircle(Point point, double radius);
 
 
