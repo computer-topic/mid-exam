@@ -13,7 +13,7 @@ private void startSending() {
   1. 동일한 이름을 사용하면 컴파일 레벨에서 오류가 난다
   2. 오류는 안 나지만, 일반적으로 혼란을 방지하기 위해 일부러 다르게 쓴다
 */
-private void makeExceptionMessageAndCloseResponse(Exception e) {
+private void addExceptionMessageAndCloseResponse(Exception e) {
   try {
     response.add(ErrorResponder.makeExceptionString(e));
     response.closeAll();
