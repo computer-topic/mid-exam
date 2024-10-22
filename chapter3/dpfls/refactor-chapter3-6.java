@@ -1,20 +1,20 @@
 public class UserValidator {
   private Cryptographer cryptographer;
 
-  public boolean checkPassword(String userName, String password) {
+  public boolean checkPasswordAndInitializeSession(String userName, String password) {
     User user;
 
     user = UserGateway.findByName(userName);
     if (user == NULL)
       return false;
-    if (isValidPassword(phrase)) {
+    if (isValidPassword(user)) {
       Session.initialize();
       return true;
     }
     return false;
   }
 
-  private isValidPassword(String phrase) {
+  private isValidPassword(User user) {
     String codedPhrase;
     String phrase;
 
