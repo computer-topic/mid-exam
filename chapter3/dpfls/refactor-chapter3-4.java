@@ -1,16 +1,19 @@
 public static String renderPage(PageData pageData, boolean isSuite) {
-    boolean isTestPage;
-    StringBuffer buffer;
-
-    isTestPage = pageData.hasAttribute("Test");
-    if (isTestPage) {
-        buffer = new StringBuffer();
-        setup(buffer, isSuite);
-        buffer.append(pageData.getContent());
-        teardown(buffer, isSuite);
-        pageData.setContent(buffer.toString());
-    }
+    if (isTestPage(pageData))
+        includeSetupAndTeardownPages();
     return pageData.getHtml();
+}
+
+private void isTestPage(PageData pageData){
+    return pageData.hasAttribute("Test");
+}
+
+private void includeSetupAndTeardownPages() {
+    buffer = new StringBuffer();
+    setup(buffer, isSuite);
+    buffer.append(pageData.getContent());
+    teardown(buffer, isSuite);
+    pageData.setContent(buffer.toString());
 }
 
 private void setup(StringBuffer buffer, boolean isSuite) {
