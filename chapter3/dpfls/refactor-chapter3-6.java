@@ -7,14 +7,14 @@ public class UserValidator {
     user = UserGateway.findByName(userName);
     if (user == NULL)
       return false;
-    if (isValidPassword(user)) {
+    if (isValidPassword(user, password)) {
       Session.initialize();
       return true;
     }
     return false;
   }
 
-  private boolean isValidPassword(User user) {
+  private boolean isValidPassword(User user, String password) {
     String codedPhrase;
     String phrase;
 
