@@ -14,7 +14,7 @@ public class UserValidator {
     return false;
   }
 
-  private isValidPassword(User user) {
+  private boolean isValidPassword(User user) {
     String codedPhrase;
     String phrase;
 
