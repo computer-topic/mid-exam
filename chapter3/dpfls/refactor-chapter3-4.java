@@ -1,40 +1,46 @@
-public static String renderPage(PageData pageData, boolean includeSuiteSetup) {
-    boolean isTestPage = pageData.hasAttribute("Test");
+public static String renderPage(PageData pageData, boolean isSuite) {
+    boolean isTestPage;
+    StringBuffer buffer;
 
+    isTestPage = pageData.hasAttribute("Test");
     if (isTestPage) {
-        StringBuffer buffer = new StringBuffer();
-
-        setup(buffer);
+        buffer = new StringBuffer();
+        setup(buffer, isSuite);
         buffer.append(pageData.getContent());
-        teardown(buffer);
+        teardown(buffer, isSuite);
+        pageData.setContent(buffer.toString());
     }
-    pageData.setContent(buffer.toString());
     return pageData.getHtml();
 }
 
-private void setup(StringBuffer buffer) {
-    String message = "!include -setup .";
+private void setup(StringBuffer buffer, boolean isSuite) {
+    String message;
 
+    message = "!include -setup .";
     writeMessagePathName(buffer, message);
-    if (includeSuiteSetup)
+    if (isSuite)
         writeMessagePathName(buffer, message);
 }
 
-private void teardown(StringBuffer buffer) {
-    String message = "!include -teardown .";
+private void teardown(StringBuffer buffer, boolean isSuite) {
+    String message;
 
+    message = "!include -teardown .";
     writeMessagePathName(buffer, message);
-    if (includeSuiteSetup)
+    if (isSuite)
         writeMessagePathName(buffer, message);
 }
 
 private void writeMessagePathName(StringBuffer buffer, String message) {
-    WikiPage page = PageCrawlerImp.getInheritedPage(...);
+    WikiPage page;
+    WikiPagePath path;
+    String pathName;
 
+    page = PageCrawlerImp.getInheritedPage(...)
     if (page)
         return ;
-    WikiPagePath path = page.getFullPath();
-    String pathName = PathParser.render(path);
+    path = page.getFullPath();
+    pathName = PathParser.render(path);
     fillBuffer(buffer, message, pathName)
 }
 
