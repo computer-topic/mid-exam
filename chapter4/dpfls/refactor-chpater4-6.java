@@ -27,9 +27,9 @@ public class GeneratePrimes {
     }
 
     private int[] getPrimeNumbers(int maxValue) {
-      initializePrimeFlags(maxValue + 1);
-      markMultiplesAsNotPrime();
-      return initializePrimeNumbers(primeCount);
+        initializePrimeFlags(maxValue + 1);
+        markMultiplesAsNotPrime();
+        return initializePrimeNumbers(primeCount);
     }
 
     private int[] initializePrimeFlags(int size) {
