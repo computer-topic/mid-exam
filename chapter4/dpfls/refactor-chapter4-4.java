@@ -1,4 +1,4 @@
-Module module = module.getDependSubsystems();
-SubSysMod subSystemModule = subSysMod.getSubSystem();
+List<Module> moduleDependencies = module.getDependSubsystems();
+SubSysMod ourSubSystem = subSysMod.getSubSystem();
 
-if (module.contains(subSystemModule))
+if (moduleDependencies.contains(ourSubSystem))
