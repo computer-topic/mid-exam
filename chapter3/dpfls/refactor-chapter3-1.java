@@ -21,7 +21,6 @@ private void calculateOutstanding() {
 }
 
 private void printCustomerOwes() {
-    System.out.println("**************************");
-    System.out.println("***** Customer Owes ******");
-    System.out.println("**************************");
+    System.out.println("name:" + _name);
+    System.out.println("amount" + outstanding);
 }
