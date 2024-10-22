@@ -1,4 +1,4 @@
-public void delete() {
+public void delete(Page page) {
     try {
         tryDeletePageAndAssociations(page);
     } catch (Exception error) {
