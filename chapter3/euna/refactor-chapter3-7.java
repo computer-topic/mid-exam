@@ -8,5 +8,6 @@ content.append(footer);
 public boolean existAttribute(String attribute)
 
 // 속성 값 set
+// set or setAttribute
 public void set(String attribute, String value)
 public void setAttribute(String value)
