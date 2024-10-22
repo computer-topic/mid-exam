@@ -11,7 +11,7 @@ public class GuessStatistics {
   //     "There %s %s %s%s", verb, number, candidate, pluralModifier);
   // }
   public void getGuessMessage(char candidate, int count) {
-    setUpVariables(count);
+    setUpVariablesRelatedPluralModifier(count);
     String guessMessage = String.format(
       "There %s %s %s%s", verb, number, candidate, pluralModifier);
     print(guessMessage);
