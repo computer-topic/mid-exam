@@ -4,7 +4,7 @@ public class Point {
     private double x;
     private double y;
 }
-Circle makeCircle(Point position, double radius);
+Circle makeCircle(Point point, double radius);
 
 (2) assertEquals(expected, actual);
 
