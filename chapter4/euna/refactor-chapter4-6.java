@@ -1,5 +1,14 @@
 import java.util.*;
 
+/**
+* This class Generates prime numbers up to a user specified
+* maximum. The algorithm used is the Sieve of Eratosthenes.
+* The algorithm is quite simple. Given an array of integers
+* starting at 2. Cross out all multiples of 2. Find the next
+* uncrossed integer, and cross out all of its multiples.
+* Repeat until you have passed the square root of the maximum
+* value.
+*/
 public class PrimesGenerator {
   private static boolean[] isPrime;
   private static int[] results;
