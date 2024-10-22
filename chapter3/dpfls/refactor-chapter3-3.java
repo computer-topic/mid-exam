@@ -1,6 +1,7 @@
-public String getName(String mobileNumber) {
-    Person person = contactService.getPerson(mobileNumber);
+public String getFirstName(String mobileNumber) {
+    Person person;
 
+    person = contactService.getPerson(mobileNumber);
     if (StringUtil.isBlank(person.firstName)) {
         return getFirstNameFromAddress(mobileNumber);
     }
@@ -8,7 +9,10 @@ public String getName(String mobileNumber) {
 }
 
 private String getFirstNameFromAddress(String mobileNumber) {
-    Json address = addressService.getAddress(mobileNumber);
-    Person personDetail = address.getPersonDetails();
+    Json address;
+    Person personDetail;
+
+    address = addressService.getAddress(mobileNumber);
+    personDetail = address.getPersonDetails();
     return personDetail.firstName;
 }
