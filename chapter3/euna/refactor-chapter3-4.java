@@ -1,23 +1,27 @@
-public static String makeTestableHtml(PageData pageData, boolean isSuite) {
+public static String makeTestableHtmlPage(PageData pageData, boolean isSuite) {
   WikiPage wikiPage = pageData.getWikiPage();
   StringBuffer testContent = new StringBuffer();
 
   if (isTestPage(pageData)) {
-    setUpContent(pageData, isSuite, testContent);
+    setUpAndTearDownPages(pageData, isSuite, testContent);
+  }
+  return pageData.getHtml();
+}
+
+private void setUpAndTearDownPages(PageData pageData, boolean isSuite, StringBuffer testContent) {
+  setUpContent(pageData, isSuite, testContent);
     appendPageDataContent(pageData, testContent);
     tearDownContent(pageData, isSuite, testContent);
-  }
-  pageData.setContent(testContent.toString());
-  return pageData.getHtml();
+    pageData.setContent(testContent.toString());
 }
 
 private boolean isTestPage(PageData pageData) {
   return pageData.hasAttribute("Test");
 }
 
-private void getPagePathName(WikiPage suitePage) {
+private String getPagePathName(WikiPage suitePage) {
   WikiPagePath pagePath = suitePage.getFullPath();
-  String pagePathName = PathParser.render(pagePath);
+  return PathParser.render(pagePath);
 }
 
 private void appendContentForTest(String includeType, String pagePathName, StringBuffer testContent) {
@@ -37,7 +41,7 @@ private void setUpContent(PageData pageData, boolean isSuite, StringBuffer testC
 private void setUpForSuiteTest(PageData pageData, StringBuffer testContent) {
   WikiPage suiteSetUp = PageCrawlerImpl.getInheritedPage(...); // setUpForSuiteTest와 setUpForTest의 코드 중 이 라인에서 차이가 있을 수 있다고 생각해 메서드에서 공통부분을 추출하여 하나의 메서드로 사용하지 않았습니다
   if (suiteSetUp != null) {
-    String pagePathName = getPagePathName(suiteSetUp, testContent);
+    String pagePathName = getPagePathName(suiteSetUp);
     appendContentForTest("setup", pagePathName, testContent)
   }
 }
