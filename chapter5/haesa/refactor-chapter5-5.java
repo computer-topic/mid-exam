@@ -5,11 +5,9 @@ for (XmlTest test : suite.getTests()) {
     testRunner.addListener(textReporter);
     testRunners.add(testRunner);
     invoker = testRunner.getInvoker();
-
     for (ITestNGMethod method : testRunner.getBeforeSuiteMethods()) {
         beforeSuiteMethods.put(method.getMethod(), method);
     }
-
     for (ITestNGMethod method : testRunner.getAfterSuiteMethods()) {
         afterSuiteMethods.put(method.getMethod(), method);
     }
