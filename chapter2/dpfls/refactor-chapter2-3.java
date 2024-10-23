@@ -1,10 +1,10 @@
-public static final int STAUS_VALUE = 0;
+public static final int STATUS_VALUE = 0;
 public static final int ITEM = 4;
 
-public class Cell{
+public class Cell {
     private int[] cell;
 
-    public static boolean isFlagged() {
+    public boolean isFlagged() {
         if (cell[STAUS_VALUE] == ITEM) {
             return true;
         }
@@ -13,12 +13,12 @@ public class Cell{
 }
 
 public List<Cell> getItemPosition() {
-    List<Cell> itemPosition = new ArrayList<Cell>();
+    List<Cell> flaggedCells = new ArrayList<Cell>();
 
     for (Cell cell : map) {
         if (cell.isFlagged()) {
-            itemPosition.add(cell);
+            flaggedCells.add(cell);
         }
     }
-    return itemPosition;
+    return flaggedCells;
 }
