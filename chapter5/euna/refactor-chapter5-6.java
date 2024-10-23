@@ -1,5 +1,5 @@
 public class TestSuite implements Test {
-    private String fName;
+    private String fileName;
     private Vector<Test> fTests = new Vector<Test>(10);
 
     public TestSuite() {
@@ -13,7 +13,7 @@ public class TestSuite implements Test {
         ...
     }
 
-    static public Test createTest(Class<? extends TestCase> theClass, String name) {
+    public static Test createTest(Class<? extends TestCase> theClass, String name) {
         ...
     }
 
