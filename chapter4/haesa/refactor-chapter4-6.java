@@ -7,8 +7,8 @@ import java.util.*;
 * Find the next uncrossed integer, and cross out all of its multiples.
 * Repeat until you have passed the square root of the maximum value.
 */
-public class GeneratePrimes {
-  private static boolean[] flagPrimes;
+public class PrimesGenerator {
+  private static boolean[] flaggedPrimes;
   private static int size;
   public static final int MIN_PRIME = 2;
 
@@ -18,7 +18,7 @@ public class GeneratePrimes {
     }
     
     size = maxValue + 1;
-    initializeFlagPrimes();
+    initializeFlaggedPrimes();
     checkPrimeForSieveOfEratosthenes();
     return getPrimes();
   }
@@ -27,23 +27,27 @@ public class GeneratePrimes {
     return maxValue < MIN_PRIME;
   }
 
-  private static void initializeFlagPrimes() {
-    flagPrimes = new boolean[size];
+  private static void initializeFlaggedPrimes() {
+    flaggedPrimes = new boolean[size];
 
     for (int i = 0; i < size; i++)
-      flagPrimes[i] = true;
+      flaggedPrimes[i] = true;
 
     // get rid of known non-primes
-    flagPrimes[0] = flagPrimes[1] = false;
+    flaggedPrimes[0] = flaggedPrimes[1] = false;
   }
 
   private static void checkPrimeForSieveOfEratosthenes() {
     for (int candidate = 2; candidate < Math.sqrt(size) + 1; candidate++) {
-      if (flagPrimes[candidate]) {
-        for (int factorableNumber = 2 * candidate; factorableNumber < size; factorableNumber += candidate)
-          flagPrimes[factorableNumber] = false;
+      if (flaggedPrimes[candidate]) {
+        markMultipleFalse(candidate);
       }
-    }    
+    }
+  }
+  
+  private markMultipleFalse(int candidate) {
+    for (int multiple = 2 * candidate; multiple < size; multiple += candidate)
+      flaggedPrimes[multiple] = false;    
   }
 
   private static int[] getPrimes() {
@@ -51,7 +55,7 @@ public class GeneratePrimes {
     int[] primes = new int[count];
 
     for (int candidate = 0, index = 0; candidate < size; candidate++) {
-      if (flagPrimes[candidate])
+      if (flaggedPrimes[candidate])
         primes[index++] = candidate;
     }
     return primes;
@@ -61,7 +65,7 @@ public class GeneratePrimes {
     int count = 0;
 
     for (int candidate = 0; candidate < size; candidate++) {
-      if (flagPrimes[candidate])
+      if (flaggedPrimes[candidate])
         count++;
     }
     return count;
