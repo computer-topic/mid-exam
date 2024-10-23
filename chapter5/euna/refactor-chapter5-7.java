@@ -44,3 +44,6 @@ public class WikiPageResponder implements SecureResponder {
     }
     ...
 }
+
+// 매개변수 한 칸 띄워쓰기
+// 함수 또는 메서드의 정의 순서는 실행 흐름 순으로 배치하는 것이 읽기에 편함
