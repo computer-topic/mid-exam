@@ -1,4 +1,6 @@
 // (1)과 (2) 빈칸에 들어갈 용어를 작성하세요
+- (1) interface
+- (2) implements
 
 public (  1  )  Shape {
     public double area();
