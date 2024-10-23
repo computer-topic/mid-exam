@@ -1,16 +1,16 @@
 private static void readPreferences() {
+  InputStream inputStream = new FileInputStream(getPreferencesFile());
+
   try {
-    InputStream inputStream = new FileInputStream(getPreferencesFile());
     setPreferences(new Properties(getPreferences()));
     getPreferences().load(inputStream);
   } catch (IOException e) {
-    closeInputStream();
+    closeInputStream(inputStream);
   }
 }
 
-private static void closeInputStream() {
+private static void closeInputStream(InputStream inputStream) {
   try {
-    InputStream inputStream = new FileInputStream(getPreferencesFile());
     if (inputStream != null)
       inputStream.close();
   } catch (IOException e) {
