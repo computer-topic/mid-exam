@@ -1,14 +1,14 @@
 ...
 for (XmlTest test : suite.getTests()) {
-    TestRunner tr = runnerFactory.newTestRunner(this, test); // 이게 안좋은 예시인듯
-    tr.addListener(m_textReporter);
-    testRunners.add(tr);
-    invoker = tr.getInvoker();
-    for (ITestNGMethod m : tr.getBeforeSuiteMethods()) {
-        beforeSuiteMethods.put(m.getMethod(), m);
+    TestRunner testRunner = runnerFactory.newTestRunner(this, test); // 이게 안좋은 예시인듯
+    testRunners.addListener(textReporter);
+    testRunners.add(testRunner);
+    invoker = testRunners.getInvoker();
+    for (ITestNGMethod method : testRunner.getBeforeSuiteMethods()) {
+        beforeSuiteMethods.put(method.getMethod(), method);
     }
-    for (ITestNGMethod m : tr.getAfterSuiteMethods()) {
-        afterSuiteMethods.put(m.getMethod(), m);
+    for (ITestNGMethod method : testRunner.getAfterSuiteMethods()) {
+        afterSuiteMethods.put(method.getMethod(), method);
     }
 }
 ...
