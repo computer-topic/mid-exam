@@ -8,7 +8,7 @@ private void startSending() {
     }
 }
 
-private void addErrorMessageAndClose(Exception e) {
+private void addErrorMessageAndCloseResponder(Exception e) {
     try {
         response.add(ErrorResponder.makeExceptionString(e));
         response.closeAll();
