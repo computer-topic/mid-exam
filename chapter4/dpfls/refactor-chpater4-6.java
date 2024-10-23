@@ -30,7 +30,7 @@ public class GeneratePrimes {
         return initializePrimeNumbers();
     }
 
-    private int[] initializePrimeFlags(int size) {
+    private void initializePrimeFlags(int size) {
         primeFlags = new boolean[size];
         for (int i = 0; i < size; i++) {
             flags[i] = true;
@@ -38,10 +38,9 @@ public class GeneratePrimes {
         // get rid of known non-primes
         flags[0] = false;
         flags[1] = false;
-        return flags;
     }
 
-    private int[] initializePrimeNumbers() {
+    private void initializePrimeNumbers() {
       int primeCount;
 
       primeCount = countPrimeNumbers();
@@ -51,7 +50,6 @@ public class GeneratePrimes {
               primeNumbers[j++] = i;
           }
       }
-      return primeNumbers;
     }
 
     private void markMultiplesAsNotPrime() {
