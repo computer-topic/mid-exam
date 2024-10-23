@@ -1,6 +1,6 @@
 public class TestSuite implements Test {
     private String fileName;
-    private Vector<Test> fTests = new Vector<Test>(10);
+    private Vector<Test> tests = new Vector<Test>(10);
 
     public TestSuite() {
     }
