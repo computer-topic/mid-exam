@@ -1,8 +1,6 @@
 ...
 for (XmlTest test : suite.getTests()) {
-    TestRunner tr = runnerFactory.newTestRunner(this, test);
-    Invoker invoker = null;
-
+    TestRunner tr = runnerFactory.newTestRunner(this, test); // 이게 안좋은 예시인듯
     tr.addListener(m_textReporter);
     testRunners.add(tr);
     invoker = tr.getInvoker();
