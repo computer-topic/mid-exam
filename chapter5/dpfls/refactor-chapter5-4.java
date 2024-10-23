@@ -1,4 +1,4 @@
-public int countTestCases() {
+public int countTestCases(List<Test> tests) {
     int count;
 
     count = 0;
