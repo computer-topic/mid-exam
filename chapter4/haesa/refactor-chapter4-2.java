@@ -5,7 +5,6 @@ function hash(data) {
   for (let i = 0; i < length ; i++) {
     const characterCode = data.charCodeAt(i);
     hash = makeHash(hash, characterCode);
-    
   }
 }
 
