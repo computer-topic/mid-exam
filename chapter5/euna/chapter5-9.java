@@ -13,3 +13,6 @@ public class Quadratic {
         return b*b - 4*a*c;
     }
 }
+
+// 교재 내용: *에 대해서 operator와 operand를 의도적으로 붙여씀
+// 연산 순서를 강조하기 위함
