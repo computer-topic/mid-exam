@@ -1,19 +1,19 @@
 private static void readPreferences() {
-  InputStream is = null;
+  InputStream inputStream = null;
 
   try {
-    is = new FileInputStream(getPreferencesFile());
+    inputStream = new FileInputStream(getPreferencesFile());
     setPreferences(new Properties(getPreferences()));
-    getPreferences().load(is);
+    getPreferences().load(inputStream);
   } catch (IOException e) {
     closedInputStream();
   }
 }
 
-private void closedInputStream(InputStream is) {
+private void closedInputStream(InputStream inputStream) {
   try {
-    if (is != null) {
-      is.close();
+    if (inputStream != null) {
+      inputStream.close();
     }
   } catch (IOException e) {
   }
