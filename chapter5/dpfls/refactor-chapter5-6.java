@@ -1,18 +1,6 @@
 public class TestSuite implements Test {
-    private String fName;
-    private Vector<Test> fTests = new Vector<Test>(10);
-
-    static public Test createTest(Class<? extends TestCase> theClass, String name) {
-        ...
-    }
-
-    public static Test warning(final String message) {
-        ...
-    }
-
-    private static String exceptionToString(Throwable t) {
-        ...
-    }
+    private String fileName;
+    private Vector<Test> fileTests = new Vector<Test>(10);
 
     public TestSuite() {
     }
@@ -22,6 +10,18 @@ public class TestSuite implements Test {
     }
 
     public TestSuite(Class<? extends TestCase> theClass, String name) {
+        ...
+    }
+
+    public static Test createTest(Class<? extends TestCase> theClass, String name) {
+        ...
+    }
+
+    public static Test warning(final String message) {
+        ...
+    }
+
+    private static String exceptionToString(Throwable t) {
         ...
     }
     ...
