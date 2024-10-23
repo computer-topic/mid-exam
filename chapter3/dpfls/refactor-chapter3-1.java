@@ -1,8 +1,6 @@
 public void printOwing() {
-    double outstanding = 0.0;
-
     printBanner();
-    outstanding = calculateOutstanding();
+    double outstanding = calculateOutstanding();
     printCustomerOwes(outstanding);
 }
 
@@ -17,8 +15,8 @@ private void calculateOutstanding() {
     double outstanding = 0.0;
 
     while (orders.hasMoreElements()) {
-        Order each = (Order)orders.nextElement();
-        outstanding += each.getAmount();
+        Order eachOrder = (Order)orders.nextElement();
+        outstanding += eachOrder.getAmount();
     }
     return outstanding;
 }
