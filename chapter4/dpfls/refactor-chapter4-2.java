@@ -5,12 +5,12 @@ function hashIt(data) {
   for (let i = 0; i < length ; i++) {
     const char = data.charCodeAt(i);
     hash = makeHash(hash, char);
-    hash = convertTo32BitInteger(hash);
   }
 }
 
 function makeHash(hash, char) {
-    return (hash << 5) - hash + char;
+    hash = (hash << 5) - hash + char;
+    return convertTo32BitInteger(hash);
 }
 
 function convertTo32BitInteger(hash) {
