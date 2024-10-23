@@ -4,7 +4,7 @@ import java.util.regex.*;
 
 public class BoldWidget extends ParentWidget {
     public static final String REGEXP = "'''.+?'''";
-    private static final Pattern pattern = Pattern.compile("'''(.+?)''‘”);
+    private static final Pattern pattern = Pattern.compile("'''(.+?)'''");
 
     public BoldWidget(ParentWidget parent, String text) throws Exception {
         super(parent);
