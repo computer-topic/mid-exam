@@ -5,7 +5,8 @@ public class WordCounter {
 
   public static void main(String[] args) {
     try {
-      countAll();
+      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+      calculateCount(bufferedReader);
       printWordCount();
     }
     catch (IOException e) {
@@ -19,8 +20,7 @@ public class WordCounter {
     System.out.println("charCount = " + charCount);
   }
 
-  private static void countAll() {
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+  private static void calculateCount(BufferedReader bufferedReader) {
     String line;
 
     while ((line = bufferedReader.readLine()) != null) {
