@@ -1,7 +1,8 @@
 private static void readPreferences() {
-  InputStream inputStream = new FileInputStream(getPreferencesFile());
+  InputStream inputStream = null;
 
   try {
+    inputStream = new FileInputStream(getPreferencesFile());
     setPreferences(new Properties(getPreferences()));
     getPreferences().load(inputStream);
   } catch (IOException e) {
