@@ -1,4 +1,4 @@
-private static void replaceZtoPercent(String str) {
+private static String replaceZtoPercent(String str) {
     StringBuilder sb = new StringBuilder(str);
 
     for (int i = 0; i < sb.length(); i++) {
@@ -9,4 +9,4 @@ private static void replaceZtoPercent(String str) {
     return sb.toString();
 }
 
-replaceZtoPercent(str);
+str = replaceZtoPercent(str);
